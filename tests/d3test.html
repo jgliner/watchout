@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dodge, Dive, Dip</title>
+</head>
+<body style="font-family: 'Open Sans'">
+<style>
+  .a {
+    background-color: #7689A9;
+  }
+  .b {
+    background-color: #4D658D;
+  }
+  .c {
+    background-color: #152C55;
+  }
+  .d {
+    background-color: #071F47;
+  }
+  .e {
+    background-color: #051838;
+  }
+  .f {
+    background-color: #000B1E;
+  }
+</style>
+  <h1>Dee Three</h1>
+  <div class="a"></div>
+  <div class="b"></div>
+  <div class="c"></div>
+  <div class="d"></div>
+  <div class="e"></div>
+  <div class="f"></div>
+  <script src="./d3.js"></script>
+  <script type="text/javascript">
+    d3.selectAll('div')
+    .data([40,80,150,160,230,420])
+    .transition()
+    .duration(1500)
+    .style('height', function(d) {
+      return `${d}px`;
+    })
+    .style('transform', function(d) {
+      return `rotate(${d}deg)`
+    });
+  </script>
+</body>
+</html>
