@@ -1,5 +1,11 @@
 /* your beautiful css styling goes here! */
-
+body {
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+  background: url(./bg.jpg) center/cover no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
 /* Note: an asteroid image is included in this repo.
 Feel free to use it if you like. */
 
