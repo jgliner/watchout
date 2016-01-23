@@ -15,17 +15,44 @@ var gameStats = {
   lives: 0
 };
 
-// floating head enemies
-var createEnemies = [];
-for (var i = 0; i < gameOptions.nEnemies; i++) {
-  createEnemies.push(i);
-}
+// IIFE enemy generator runs at load
 
-createEnemies = createEnemies.map(function(enemy) {
-  var obj = {
-    id: enemy,
-    x: Math.random()*w,
-    y: Math.random()*h
-  };
-  return obj;
-});
+(function() {
+  // floating head enemies
+  var createEnemies = [];
+  for (var i = 0; i < gameOptions.nEnemies; i++) {
+    createEnemies.push(i);
+  }
+  createEnemies = createEnemies.map(function(enemy) {
+    var obj = {
+      id: enemy,
+      x: Math.random()*(w-100),
+      y: Math.random()*(h-100)
+    };
+    return obj;
+  });
+
+  //make every enemny in the array
+
+  var heads = d3.select('body').select('svg').selectAll('.enemy')
+    .data(createEnemies, function(d) {
+      return d.id;
+    });
+  
+  heads.enter()
+    .append('image')
+    .attr('id', function(d) {
+      return d.id;
+    })
+    .attr('x', function(d) {
+      return d.x;
+    })
+    .attr('y', function(d) {
+      return d.y;
+    })
+    .attr('xlink:href', function(d) {
+      return './asteroid.png';
+    })
+    .attr('class', 'enemy');
+
+})();

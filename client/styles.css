@@ -20,7 +20,7 @@ Feel free to use it if you like. */
   left: 5vw;
   height: 80vh;
   width: 90vw;
-  background-color: rgba(255,255,255,0.4);
+  border: 1px groove rgba(255,255,255,0.7);
   transform: translate(0%, -50%);
 }
 
@@ -28,4 +28,11 @@ Feel free to use it if you like. */
   position: relative;
   top: 50px;
   transform: translate(7%, 100%);
+}
+
+.enemy {
+  position: absolute;
+  z-index: 1000;
+  height: 100px;
+  width: 100px;
 }
