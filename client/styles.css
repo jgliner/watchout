@@ -15,14 +15,17 @@ div {
 Feel free to use it if you like. */
 
 .stage {
-  position: relative;
+  position: absolute;
   top: 50%;
+  left: 5vw;
   height: 80vh;
+  width: 90vw;
   background-color: rgba(255,255,255,0.4);
   transform: translate(0%, -50%);
 }
 
 .scoreboard {
-  position: absolute;
+  position: relative;
   top: 50px;
+  transform: translate(7%, 100%);
 }
