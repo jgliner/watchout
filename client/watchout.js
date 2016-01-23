@@ -7,7 +7,7 @@ var w = +d3.select('body').select('.stage').style('width').slice(0,-2);
 var gameOptions = {
   height: h,
   width: w,
-  nEnemies: 15
+  nEnemies: 1
 };
 
 var gameStats = {
@@ -42,11 +42,7 @@ function init() {
   var svg = d3.select("svg");
   svg.on("mousemove",function() {
     var coords = d3.mouse(this);
-    // console.log(heads.attr("x"));
-    if (coords[0] - heads.attr("x") < 5 && coords[1] - heads.attr("y") < 5) {
-      console.log("touching");
-    }
-    //check to see if coords collide with a head
+    console.log(coords);
   });
 
 
@@ -76,8 +72,7 @@ function init() {
 
         return function(t) {
           // this.textContext = i(t)
-          console.log("y", j(t));
-          // console.log(x, i(t));
+          // console.log(i(t) + " , " + j(t));
         }
       })
     .attr('x', function(d) {
@@ -86,7 +81,7 @@ function init() {
     .attr('y', function(d) {
       return Math.random()*(h-100);
     });
-  }, 1000);
+  }, 1500);
 }
 init();
 
