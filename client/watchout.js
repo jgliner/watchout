@@ -7,7 +7,7 @@ var w = +d3.select('body').select('.stage').style('width').slice(0,-2);
 var gameOptions = {
   height: h,
   width: w,
-  nEnemies: 2
+  nEnemies: 15
 };
 
 var gameStats = {
@@ -66,16 +66,27 @@ function init() {
     })
     .attr('class', 'enemy');
 
-  setInterval(function() {
-    heads.transition()
-    .duration(1500)
+    setInterval(function() {
+      heads.transition()
+      .duration(1500)
+      .tween("text", function() {
+        var i = d3.interpolateRound(this.x.baseVal.value, this.x.animVal.value);
+        var j = d3.interpolateRound(this.y.baseVal.value, this.y.animVal.value);
+        // var d = d3.interpolateRound(this.x.animVal.value,this.y.animVal.value);
+
+        return function(t) {
+          // this.textContext = i(t)
+          console.log("y", j(t));
+          // console.log(x, i(t));
+        }
+      })
     .attr('x', function(d) {
       return Math.random()*(w-100);
     })
     .attr('y', function(d) {
       return Math.random()*(h-100);
     });
-  }, 5000);
+  }, 1000);
 }
 init();
 
