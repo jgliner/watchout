@@ -17,7 +17,7 @@ var gameStats = {
 
 // IIFE enemy generator runs at load
 
-(function() {
+function init() {
   // floating head enemies
   var createEnemies = [];
   for (var i = 0; i < gameOptions.nEnemies; i++) {
@@ -55,4 +55,16 @@ var gameStats = {
     })
     .attr('class', 'enemy');
 
-})();
+  setInterval(function() {
+    heads.transition()
+    .duration(1500)
+    .attr('x', function(d) {
+      return Math.random()*(w-100);
+    })
+    .attr('y', function(d) {
+      return Math.random()*(h-100);
+    })
+  }, 1500);
+}
+init();
+
