@@ -7,7 +7,7 @@ var w = +d3.select('body').select('.stage').style('width').slice(0,-2);
 var gameOptions = {
   height: h,
   width: w,
-  nEnemies: 30
+  nEnemies: 2
 };
 
 var gameStats = {
@@ -39,6 +39,17 @@ function init() {
       return d.id;
     });
   
+  var svg = d3.select("svg");
+  svg.on("mousemove",function() {
+    var coords = d3.mouse(this);
+    // console.log(heads.attr("x"));
+    if (coords[0] - heads.attr("x") < 5 && coords[1] - heads.attr("y") < 5) {
+      console.log("touching");
+    }
+    //check to see if coords collide with a head
+  });
+
+
   heads.enter()
     .append('image')
     .attr('id', function(d) {
@@ -46,7 +57,7 @@ function init() {
     })
     .attr('x', function(d) {
       return d.x;
-    })
+    })    
     .attr('y', function(d) {
       return d.y;
     })
@@ -63,8 +74,8 @@ function init() {
     })
     .attr('y', function(d) {
       return Math.random()*(h-100);
-    })
-  }, 1500);
+    });
+  }, 5000);
 }
 init();
 
