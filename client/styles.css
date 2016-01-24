@@ -23,17 +23,19 @@ Feel free to use it if you like. */
   border: 1px groove rgba(255,255,255,0.7);
   transform: translate(0%, -50%);
   cursor: url(./player.png) 32 31, default !important;
+  z-index: 1000;
 }
 
 .scoreboard {
   position: relative;
   top: 50px;
+  z-index: 0;
   transform: translate(7%, 100%);
 }
 
 .enemy {
   position: absolute;
-  z-index: 1000;
+  z-index: 1001;
   height: 100px;
   width: 100px;
 }
