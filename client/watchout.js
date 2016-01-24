@@ -12,7 +12,8 @@ var gameOptions = {
 
 var gameStats = {
   score: 0,
-  lives: 0
+  lives: 10,
+  highscore: 0
 };
 
 // IIFE enemy generator runs at load
@@ -76,6 +77,19 @@ function init() {
       });
   };
   move(heads);
+  
+  var currentScore = d3.select(".current").select("span");
+  var lives = d3.select(".lives").select("span");
+  var highScore = d3.select(".highscore").select("span");
+  //update function that looks at gameStats for numbers
+
+  setInterval(function() {
+    gameStats.highscore = Math.max(gameStats.highscore, gameStats.score);
+    gameStats.score++;
+    currentScore.text(gameStats.score);
+    lives.text(gameStats.lives);
+    highScore.text(gameStats.highscore);
+  },100);
 
   var prevCollisionState = false;
   var collisions = function() {
@@ -92,8 +106,12 @@ function init() {
       }
     });
     if (collision) {
+      svg.style('background-color', 'rgba(255,0,0,0.5)').transition().duration(50).each('end', function(){svg.style('background-color', 'transparent').transition();});
       if (prevCollisionState !== collision) {
         gameStats.lives--;
+        gameStats.score = 0;
+        
+        console.log("SHOW ME WHAT YOU GOT");
       }
     }
     prevCollisionState = collision;

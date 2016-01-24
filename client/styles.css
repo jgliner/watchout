@@ -11,6 +11,10 @@ div {
   color: #fff;
   font-weight: 800;
 }
+
+svg {
+  background-color: transparent;
+}
 /* Note: an asteroid image is included in this repo.
 Feel free to use it if you like. */
 
